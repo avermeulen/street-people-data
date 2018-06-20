@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<script src="people.json" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style media="screen">
+
+    .show {
+      display: block;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="stars">
+    <div class="star" data-rating="1">*</div>
+    <div class="star" data-rating="2">**</div>
+    <div class="star" data-rating="3">***</div>
+    <div class="star" data-rating="4">****</div>
+    <div class="star" data-rating="5">*****</div>
+  </div>
+  <div class="">
+    <div class="rating hidden" data-rating="1">*</div>
+    <div class="rating hidden" data-rating="2">**</div>
+    <div class="rating hidden" data-rating="3">***</div>
+    <div class="rating hidden" data-rating="4">****</div>
+    <div class="rating hidden" data-rating="5">*****</div>
+  </div>
+</body>
+<script type="text/javascript">
+  var stars = document.querySelector(".stars");
+  var ratings = document.querySelectorAll('.rating');
+
+
+
+  console.log(_.countBy(people, function (person){
+
+    return person.age + "-" + person.gender;
+
+  }));
+
+  // for (var i = 0; i < people.length; i++) {
+  //   var person = people[i];
+  //   console.log(person.age);
+  // }
+
+  stars.addEventListener('click', function(evt) {
+    var currentRating = Number(evt.target.dataset.rating);
+
+    // hide all
+    for (var i = 0; i < ratings.length; i++) {
+        // remove all the checked options
+        ratings[i].classList.add("hidden");
+    }
+
+    // showing the right ones
+    for (var i = 1; i <= currentRating; i++) {
+        // add checked to all the right ones
+        ratings[i-1].classList.remove("hidden");
+    }
+
+  });
+
+</script>
+
+</html>
