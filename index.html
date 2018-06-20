@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 
 <script src="people.json" charset="utf-8"></script>
+<script src="tendors.json" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.js"></script>
 
 <head>
@@ -41,13 +42,14 @@
   var stars = document.querySelector(".stars");
   var ratings = document.querySelectorAll('.rating');
 
+  console.log(tenders.length);
 
 
-  console.log(_.countBy(people, function (person){
-
-    return person.age + "-" + person.gender;
-
-  }));
+  // console.log(_.countBy(people, function (person){
+  //
+  //   return person.age + "-" + person.gender;
+  //
+  // }));
 
   // for (var i = 0; i < people.length; i++) {
   //   var person = people[i];
